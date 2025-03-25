@@ -33,7 +33,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <Link href="/dashboard" className="text-xl font-bold text-white">
-              CinemaReserve
+              Cinemovies
             </Link>
           </div>
 

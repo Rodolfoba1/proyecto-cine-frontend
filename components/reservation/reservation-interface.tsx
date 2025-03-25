@@ -96,7 +96,7 @@ export default function ReservationInterface({ cinema, userId }: ReservationInte
     <Card className="bg-slate-800 border-slate-700">
       <CardContent className="p-6">
         <div className="mb-6">
-          <h2 className="text-xl font-semibold mb-4">Selecciona una fecha</h2>
+          <h2 className="text-xl font-semibold mb-4  text-white">Selecciona una fecha</h2>
           <Popover>
             <PopoverTrigger asChild>
               <Button
@@ -123,7 +123,7 @@ export default function ReservationInterface({ cinema, userId }: ReservationInte
         </div>
 
         <div className="mb-6">
-          <h2 className="text-xl font-semibold mb-4">Selecciona tus asientos</h2>
+          <h2 className="text-xl font-semibold mb-4  text-white">Selecciona tus asientos</h2>
           <SeatSelector
             seats={seats}
             selectedSeats={selectedSeats}
