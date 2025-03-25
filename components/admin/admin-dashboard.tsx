@@ -56,7 +56,7 @@ export default function AdminDashboard() {
             <Film className="h-5 w-5 text-blue-400" />
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold">{stats.totalCinemas}</div>
+            <div className="text-3xl font-bold text-sky-500">{stats.totalCinemas}</div>
             <p className="text-sm text-slate-400 mt-1">Salas activas</p>
           </CardContent>
         </Card>
@@ -67,7 +67,7 @@ export default function AdminDashboard() {
             <Users className="h-5 w-5 text-green-400" />
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold">{stats.totalUsers}</div>
+            <div className="text-3xl font-bold text-sky-500">{stats.totalUsers}</div>
             <p className="text-sm text-slate-400 mt-1">Usuarios registrados</p>
           </CardContent>
         </Card>
@@ -78,7 +78,7 @@ export default function AdminDashboard() {
             <Calendar className="h-5 w-5 text-purple-400" />
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold">{stats.totalReservations}</div>
+            <div className="text-3xl font-bold text-sky-500">{stats.totalReservations}</div>
             <p className="text-sm text-slate-400 mt-1">Reservaciones realizadas</p>
           </CardContent>
         </Card>

@@ -65,7 +65,7 @@ export default function LoginForm() {
                   <FormLabel>Correo electrónico</FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="correo@ejemplo.com"
+                      placeholder="usuario@correo.com"
                       {...field}
                       className="bg-slate-700 border-slate-600 text-white"
                     />

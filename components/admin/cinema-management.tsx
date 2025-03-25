@@ -98,7 +98,7 @@ export default function CinemaManagement({ initialCinemas }: CinemaManagementPro
                 <div className="flex space-x-2">
                   <Button
                     variant="outline"
-                    className="flex-1 border-slate-600 text-slate-300 hover:bg-slate-700"
+                    className="flex-1 border-slate-600 hover:bg-sky-500"
                     onClick={() => setEditingCinema(cinema)}
                   >
                     <Edit size={16} className="mr-2" />
@@ -106,7 +106,7 @@ export default function CinemaManagement({ initialCinemas }: CinemaManagementPro
                   </Button>
                   <Button
                     variant="outline"
-                    className="flex-1 border-red-800 text-red-400 hover:bg-red-900/30"
+                    className="flex-1 border-red-800 text-red-500 hover:bg-red-500"
                     onClick={() => setDeletingCinema(cinema)}
                   >
                     <Trash2 size={16} className="mr-2" />
