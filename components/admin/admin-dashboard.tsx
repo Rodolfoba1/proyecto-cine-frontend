@@ -52,7 +52,7 @@ export default function AdminDashboard() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         <Card className="bg-slate-800 border-slate-700">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-lg font-medium">Salas de Cine</CardTitle>
+            <CardTitle className="text-lg font-medium text-white">Salas de Cine</CardTitle>
             <Film className="h-5 w-5 text-blue-400" />
           </CardHeader>
           <CardContent>
@@ -63,7 +63,7 @@ export default function AdminDashboard() {
 
         <Card className="bg-slate-800 border-slate-700">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-lg font-medium">Usuarios</CardTitle>
+            <CardTitle className="text-lg font-medium text-white">Usuarios</CardTitle>
             <Users className="h-5 w-5 text-green-400" />
           </CardHeader>
           <CardContent>
@@ -74,7 +74,7 @@ export default function AdminDashboard() {
 
         <Card className="bg-slate-800 border-slate-700">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-lg font-medium">Reservaciones</CardTitle>
+            <CardTitle className="text-lg font-medium text-white">Reservaciones</CardTitle>
             <Calendar className="h-5 w-5 text-purple-400" />
           </CardHeader>
           <CardContent>

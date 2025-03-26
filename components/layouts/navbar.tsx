@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import { useRouter, usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { LogOut, Menu, X, Shield } from "lucide-react"
+import { LogOut, Menu, X } from "lucide-react"
 import { logout, getSession } from "@/lib/auth"
 
 export default function Navbar() {
@@ -17,9 +17,19 @@ export default function Navbar() {
     async function checkAdmin() {
       const session = await getSession()
       setIsAdmin(session?.role === "admin")
+
+      // Redirigir si un administrador intenta acceder a rutas de cliente
+      if (session?.role === "admin" && pathname.startsWith("/dashboard")) {
+        router.push("/admin")
+      }
+
+      // Redirigir si un cliente intenta acceder a rutas de administrador
+      if (session?.role === "client" && pathname.startsWith("/admin")) {
+        router.push("/dashboard")
+      }
     }
     checkAdmin()
-  }, [])
+  }, [pathname, router])
 
   const handleLogout = async () => {
     await logout()
@@ -32,25 +42,37 @@ export default function Navbar() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <Link href="/dashboard" className="text-xl font-bold text-white">
-              Cinemovies
+            <Link href={isAdmin ? "/admin" : "/dashboard"} className="text-xl font-bold text-white">
+              CinemaReserve {isAdmin && <span className="text-blue-400">Admin</span>}
             </Link>
           </div>
 
           {/* Desktop menu */}
           <div className="hidden md:block">
             <div className="flex items-center space-x-4">
-              <Link href="/dashboard" className="text-white hover:text-blue-300">
-                Inicio
-              </Link>
-              <Link href="/dashboard/my-reservations" className="text-white hover:text-blue-300">
-                Mis Reservaciones
-              </Link>
-              {isAdmin && (
-                <Link href="/admin" className="text-white hover:text-blue-300 flex items-center gap-1">
-                  <Shield size={16} />
-                  Admin
-                </Link>
+              {isAdmin ? (
+                // Opciones para administradores
+                <>
+                  <Link href="/admin" className="text-white hover:text-blue-300">
+                    Dashboard
+                  </Link>
+                  <Link href="/admin/cinemas" className="text-white hover:text-blue-300">
+                    Gestión de Salas
+                  </Link>
+                  <Link href="/admin/users" className="text-white hover:text-blue-300">
+                    Gestión de Usuarios
+                  </Link>
+                </>
+              ) : (
+                // Opciones para clientes
+                <>
+                  <Link href="/dashboard" className="text-white hover:text-blue-300">
+                    Inicio
+                  </Link>
+                  <Link href="/dashboard/my-reservations" className="text-white hover:text-blue-300">
+                    Mis Reservaciones
+                  </Link>
+                </>
               )}
               <Button
                 variant="ghost"
@@ -76,29 +98,49 @@ export default function Navbar() {
       {isMenuOpen && (
         <div className="md:hidden bg-slate-800 pb-4 px-4">
           <div className="flex flex-col space-y-3">
-            <Link
-              href="/dashboard"
-              className="text-white hover:text-blue-300 py-2"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Inicio
-            </Link>
-            <Link
-              href="/dashboard/my-reservations"
-              className="text-white hover:text-blue-300 py-2"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Mis Reservaciones
-            </Link>
-            {isAdmin && (
-              <Link
-                href="/admin"
-                className="text-white hover:text-blue-300 py-2 flex items-center gap-1"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <Shield size={16} />
-                Admin
-              </Link>
+            {isAdmin ? (
+              // Opciones para administradores
+              <>
+                <Link
+                  href="/admin"
+                  className="text-white hover:text-blue-300 py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Dashboard
+                </Link>
+                <Link
+                  href="/admin/cinemas"
+                  className="text-white hover:text-blue-300 py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Gestión de Salas
+                </Link>
+                <Link
+                  href="/admin/users"
+                  className="text-white hover:text-blue-300 py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Gestión de Usuarios
+                </Link>
+              </>
+            ) : (
+              // Opciones para clientes
+              <>
+                <Link
+                  href="/dashboard"
+                  className="text-white hover:text-blue-300 py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Inicio
+                </Link>
+                <Link
+                  href="/dashboard/my-reservations"
+                  className="text-white hover:text-blue-300 py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Mis Reservaciones
+                </Link>
+              </>
             )}
             <Button
               variant="ghost"

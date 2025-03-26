@@ -10,6 +10,11 @@ export default async function DashboardPage() {
     redirect("/")
   }
 
+  // Redirigir administradores al panel de administración
+  if (session.role === "admin") {
+    redirect("/admin")
+  }
+
   return (
     <DashboardLayout>
       <div className="p-6">
