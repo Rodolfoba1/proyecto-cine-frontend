@@ -43,7 +43,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <Link href={isAdmin ? "/admin" : "/dashboard"} className="text-xl font-bold text-white">
-              CinemaReserve {isAdmin && <span className="text-blue-400">Admin</span>}
+              CineTicket {isAdmin && <span className="text-blue-400">Admin</span>}
             </Link>
           </div>
 

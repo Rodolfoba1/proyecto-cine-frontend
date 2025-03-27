@@ -23,7 +23,7 @@ export default function AdminNavbar() {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <Link href="/admin" className="text-xl font-bold text-white">
-              Cinemovies <span className="text-blue-400">Admin</span>
+              CineTicket <span className="text-blue-400">Admin</span>
             </Link>
           </div>
 
