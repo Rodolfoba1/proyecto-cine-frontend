@@ -36,13 +36,11 @@ export default function LoginForm() {
     setIsLoading(true)
     try {
       await login(data)
+      toast.success("Has iniciado sesión exitosamente.")
       router.push("/dashboard")
       router.refresh()
     } catch (error) {
-      toast({
-        message: "Error de autenticación. Credenciales incorrectas. Intente nuevamente.",
-        variant: "destructive",
-      })
+      toast.error("Error de autenticación. Credenciales incorrectas. Intente nuevamente.");
     } finally {
       setIsLoading(false)
     }

@@ -9,6 +9,7 @@ import type { Cinema } from "@/types/cinema"
 import CinemaForm from "@/components/admin/cinema-form"
 import DeleteCinemaDialog from "@/components/admin/delete-cinema-dialog"
 import { deleteCinema } from "@/lib/cinema"
+import { toast } from "sonner"
 
 interface CinemaManagementProps {
   initialCinemas: Cinema[]
@@ -38,9 +39,11 @@ export default function CinemaManagement({ initialCinemas }: CinemaManagementPro
       await deleteCinema(deletingCinema.id)
       setCinemas(cinemas.filter((cinema) => cinema.id !== deletingCinema.id))
       setDeletingCinema(null)
+      toast.success("Eliminado exitosamente.")
       router.refresh()
     } catch (error) {
       console.error("Error deleting cinema:", error)
+      toast.error("Error al eliminar. Intente nuevamente.");
     }
   }
 

@@ -18,6 +18,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import type { Cinema } from "@/types/cinema"
 import { createCinema, updateCinema } from "@/lib/cinema"
+import { toast } from "sonner"
 
 interface CinemaFormProps {
   isOpen: boolean
@@ -77,6 +78,7 @@ export default function CinemaForm({ isOpen, onClose, onSuccess, cinema }: Cinem
           columns: data.columns,
         })
         onSuccess(updatedCinema)
+        toast.success("Actualizado exitosamente.")
       } else {
         // Crear nueva sala
         const newCinema = await createCinema({
@@ -90,6 +92,7 @@ export default function CinemaForm({ isOpen, onClose, onSuccess, cinema }: Cinem
           columns: data.columns,
         })
         onSuccess(newCinema)
+        toast.success("Creado exitosamente.")
       }
     } catch (error) {
       console.error("Error saving cinema:", error)

@@ -49,15 +49,10 @@ export default function RegisterForm() {
         email: data.email,
         password: data.password,
       });
-      toast({
-        message: "Cuenta creada: Tu cuenta ha sido creada exitosamente. Ahora puedes iniciar sesión.",
-      });
-      router.push("/");
+      toast.success("Tu cuenta ha sido creada exitosamente. Ahora puedes iniciar sesión.");
+      setTimeout(() => router.push("/"), 2000);
     } catch (error) {
-      toast({
-        message: "Error al registrar: No se pudo crear la cuenta. Intente nuevamente.",
-        type: "error",
-    });
+      toast.error("Error al crear la cuenta. Inténtalo nuevamente.");
     } finally {
       setIsLoading(false)
     }
