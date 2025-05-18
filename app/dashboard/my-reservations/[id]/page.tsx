@@ -16,8 +16,8 @@ interface ReservationDetailsPageProps {
   }
 }
 
-export default async function ReservationDetailsPage({ params }: ReservationDetailsPageProps) {
-  const { id } = params // ✅ CORREGIDO
+export default async function ReservationDetailsPage({ params }: { params: { id: string } }) {
+  const { id } = params 
 
   try {
     const session = await getSession()
