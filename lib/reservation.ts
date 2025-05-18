@@ -35,7 +35,7 @@ export async function getSeatsForDate(cinemaId: string, date: string): Promise<S
 
 export async function createReservation({
   cinemaId,
-  userId,
+  // userId,
   seats,
   date,
   paymentDetails,

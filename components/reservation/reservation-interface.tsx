@@ -29,7 +29,7 @@ export default function ReservationInterface({ cinema, userId }: ReservationInte
   const [reservationId, setReservationId] = useState<string | null>(null)
 
   // Generar fechas disponibles (próximos 8 días)
-  const availableDates = Array.from({ length: 8 }, (_, i) => addDays(today, i))
+  // const availableDates = Array.from({ length: 8 }, (_, i) => addDays(today, i))
 
   useEffect(() => {
     async function loadSeats() {
@@ -175,7 +175,7 @@ export default function ReservationInterface({ cinema, userId }: ReservationInte
           <div className="mt-6 p-4 bg-green-900/30 border border-green-700 rounded-md">
             <h3 className="text-lg font-semibold text-green-400 mb-2">¡Reservación completada!</h3>
             <p className="text-slate-300 mb-2">
-              Tu reservación ha sido confirmada. Puedes ver los detalles en la sección "Mis Reservaciones".
+              Tu reservación ha sido confirmada. Puedes ver los detalles en la sección en &quot;Mis Reservacionese&quot;.
             </p>
             <Button
               variant="outline"
