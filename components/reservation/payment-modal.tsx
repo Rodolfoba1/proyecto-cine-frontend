@@ -20,7 +20,7 @@ import { CreditCard } from "lucide-react"
 interface PaymentModalProps {
   isOpen: boolean
   onClose: () => void
-  onComplete: (paymentDetails: any) => void
+  onComplete: (paymentDetails: unknown) => void
   totalAmount: number
   reservationDetails: {
     cinema: string
