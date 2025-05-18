@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import QRCode from "qrcode"
 import { Button } from "@/components/ui/button"
 import { Download } from "lucide-react"
+import Image from "next/image"
 
 interface QRCodeComponentProps {
   data: string
@@ -48,7 +49,7 @@ export default function QRCodeComponent({ data }: QRCodeComponentProps) {
       {qrCodeUrl ? (
         <>
           <div className="bg-slate-700 p-4 rounded-lg">
-            <img src={qrCodeUrl || "/placeholder.svg"} alt="QR Code" className="w-48 h-48" />
+            <Image src={qrCodeUrl || "/placeholder.svg"} alt="QR Code" className="w-48 h-48" />
           </div>
           <Button onClick={handleDownload} className="mt-4 bg-blue-600 hover:bg-blue-700 flex items-center gap-2">
             <Download size={16} />

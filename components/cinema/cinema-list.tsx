@@ -6,6 +6,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/componen
 import { Button } from "@/components/ui/button"
 import { getCinemas } from "@/lib/cinema"
 import type { Cinema } from "@/types/cinema"
+import Image from "next/image"
 
 export default function CinemaList() {
   const router = useRouter()
@@ -55,7 +56,7 @@ export default function CinemaList() {
           className="bg-slate-800 border-slate-700 overflow-hidden hover:shadow-lg transition-shadow"
         >
           <div className="aspect-video relative overflow-hidden">
-            <img
+            <Image
               src={cinema.movie.posterUrl || "/placeholder.svg"}
               alt={cinema.movie.title}
                 width={400}

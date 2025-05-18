@@ -3,6 +3,7 @@ import { getSession } from "@/lib/auth"
 import { getCinemaById } from "@/lib/cinema"
 import DashboardLayout from "@/components/layouts/dashboard-layout"
 import ReservationInterface from "@/components/reservation/reservation-interface"
+import Image from "next/image"
 
 interface ReservationPageProps {
   params: {
@@ -37,7 +38,7 @@ export default async function ReservationPage({ params }: ReservationPageProps) 
           <div className="bg-slate-800 rounded-lg p-4 h-fit">
             <h2 className="text-xl font-semibold mb-4">Información de la película</h2>
             <div className="aspect-[2/3] mb-4 overflow-hidden rounded-md">
-              <img
+              <Image
                 src={cinema.movie.posterUrl || "/placeholder.svg"}
                 alt={cinema.movie.title}
                   width={400}
