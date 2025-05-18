@@ -10,9 +10,13 @@ import { format, parseISO } from "date-fns"
 import { es } from "date-fns/locale"
 import QRCode from "@/components/reservation/qr-code"
 
-export default async function ReservationDetailsPage({ params }: { params: { id: string } }) {
-  const { id } = params // sin await
+interface ReservationDetailsPageProps {
+  params: {
+    id: string
+  }
+}
 
+export default async function ReservationDetailsPage({ params }: ReservationDetailsPageProps) {
   try {
     const session = await getSession()
 
@@ -20,9 +24,14 @@ export default async function ReservationDetailsPage({ params }: { params: { id:
       redirect("/")
     }
 
+    const id = params.id
     const reservation = await getReservationById(id)
 
-    if (!reservation || reservation.userId !== session.id) {
+    if (!reservation) {
+      redirect("/dashboard/my-reservations")
+    }
+
+    if (String(reservation.userId) !== String(session.id)) {
       redirect("/dashboard/my-reservations")
     }
 
@@ -62,27 +71,17 @@ export default async function ReservationDetailsPage({ params }: { params: { id:
                       <h3 className="text-lg font-semibold mb-2">Información de la sala</h3>
                       <p><span className="font-semibold">Sala:</span> {cinema.name}</p>
                     </div>
-
                     <div>
                       <h3 className="text-lg font-semibold mb-2">Detalles de la reservación</h3>
-                      <p><span className="font-semibold">Fecha de la función:</span>{" "}
-                        {format(parseISO(reservation.date), "PPP", { locale: es })}
-                      </p>
-                      <p><span className="font-semibold">Asientos:</span>{" "}
-                        {reservation.seats
-                          .map((seat) => `${String.fromCharCode(65 + seat.row)}${seat.column + 1}`)
-                          .join(", ")}
-                      </p>
+                      <p><span className="font-semibold">Fecha de la función:</span> {format(parseISO(reservation.date), "PPP", { locale: es })}</p>
+                      <p><span className="font-semibold">Asientos:</span> {reservation.seats.map((s) => `${String.fromCharCode(65 + s.row)}${s.column + 1}`).join(", ")}</p>
                       <p><span className="font-semibold">Total pagado:</span> ${reservation.seats.length * 50}.00</p>
-                      <p><span className="font-semibold">Reservado el:</span>{" "}
-                        {format(parseISO(reservation.createdAt), "PPP", { locale: es })}
-                      </p>
+                      <p><span className="font-semibold">Reservado el:</span> {format(parseISO(reservation.createdAt), "PPP", { locale: es })}</p>
                     </div>
                   </div>
                 </CardContent>
               </Card>
             </div>
-
             <div>
               <Card className="bg-slate-800 border-slate-700">
                 <CardHeader>
@@ -101,7 +100,7 @@ export default async function ReservationDetailsPage({ params }: { params: { id:
       </DashboardLayout>
     )
   } catch (error) {
-    console.error("Error in ReservationDetailsPage:", error)
+    console.error("Error en ReservationDetailsPage:", error)
     redirect("/dashboard/my-reservations")
   }
 }
