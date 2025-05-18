@@ -10,11 +10,7 @@ import { format, parseISO } from "date-fns"
 import { es } from "date-fns/locale"
 import QRCode from "@/components/reservation/qr-code"
 
-interface ReservationDetailsPageProps {
-  params: {
-    id: string
-  }
-}
+
 
 export default async function ReservationDetailsPage({ params }: { params: { id: string } }) {
   const { id } = params 
