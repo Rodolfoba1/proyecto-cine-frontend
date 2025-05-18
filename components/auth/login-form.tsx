@@ -8,9 +8,23 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
-import { toast } from "sonner";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle
+} from "@/components/ui/card"
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage
+} from "@/components/ui/form"
+import { toast } from "sonner"
 import { login } from "@/lib/auth"
 
 const loginSchema = z.object({
@@ -39,8 +53,8 @@ export default function LoginForm() {
       toast.success("Has iniciado sesión exitosamente.")
       router.push("/dashboard")
       router.refresh()
-    } catch (error) {
-      toast.error("Error de autenticación. Credenciales incorrectas. Intente nuevamente.");
+    } catch {
+      toast.error("Error de autenticación. Credenciales incorrectas. Intente nuevamente.")
     } finally {
       setIsLoading(false)
     }
@@ -107,4 +121,3 @@ export default function LoginForm() {
     </Card>
   )
 }
-

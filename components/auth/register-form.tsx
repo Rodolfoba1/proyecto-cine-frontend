@@ -8,9 +8,23 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
-import { toast } from "sonner";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle
+} from "@/components/ui/card"
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage
+} from "@/components/ui/form"
+import { toast } from "sonner"
 import { register } from "@/lib/auth"
 
 const registerSchema = z
@@ -48,11 +62,11 @@ export default function RegisterForm() {
         name: data.name,
         email: data.email,
         password: data.password,
-      });
-      toast.success("Tu cuenta ha sido creada exitosamente. Ahora puedes iniciar sesión.");
-      setTimeout(() => router.push("/"), 2000);
-    } catch (error) {
-      toast.error("Error al crear la cuenta. Inténtalo nuevamente.");
+      })
+      toast.success("Tu cuenta ha sido creada exitosamente. Ahora puedes iniciar sesión.")
+      setTimeout(() => router.push("/"), 2000)
+    } catch {
+      toast.error("Error al crear la cuenta. Inténtalo nuevamente.")
     } finally {
       setIsLoading(false)
     }
@@ -150,4 +164,3 @@ export default function RegisterForm() {
     </Card>
   )
 }
-
