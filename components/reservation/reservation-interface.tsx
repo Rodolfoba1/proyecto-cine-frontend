@@ -73,7 +73,7 @@ export default function ReservationInterface({ cinema, userId }: ReservationInte
     }
   }
 
-  const handlePaymentComplete = async (paymentDetails: any) => {
+const handlePaymentComplete = async (paymentDetails: unknown) => {
     try {
       const formattedDate = format(date, "yyyy-MM-dd")
       const result = await createReservation({

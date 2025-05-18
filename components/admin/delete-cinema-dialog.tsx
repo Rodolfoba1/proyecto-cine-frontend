@@ -26,8 +26,7 @@ export default function DeleteCinemaDialog({ isOpen, onClose, onConfirm, cinema 
         <AlertDialogHeader>
           <AlertDialogTitle>¿Estás seguro?</AlertDialogTitle>
           <AlertDialogDescription className="text-slate-400">
-            Esta acción eliminará la sala &quot;cinema.namee&quot; con la película e&quot;cinema.movie.titlee&quot;". Esta acción no se
-            puede deshacer.
+            Esta acción eliminará la sala &quot;{cinema.name}&quot; con la película &quot;{cinema.movie.title}&quot;. Esta acción no se puede deshacer.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
@@ -40,4 +39,3 @@ export default function DeleteCinemaDialog({ isOpen, onClose, onConfirm, cinema 
     </AlertDialog>
   )
 }
-

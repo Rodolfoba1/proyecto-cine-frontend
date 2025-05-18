@@ -79,6 +79,8 @@ export default function CinemaManagement({ initialCinemas }: CinemaManagementPro
                 <img
                   src={cinema.movie.posterUrl || "/placeholder.svg"}
                   alt={cinema.movie.title}
+                    width={400}
+                    height={600}
                   className="w-full h-full object-cover"
                 />
               </div>

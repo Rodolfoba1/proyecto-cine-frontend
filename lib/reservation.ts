@@ -35,7 +35,6 @@ export async function getSeatsForDate(cinemaId: string, date: string): Promise<S
 
 export async function createReservation({
   cinemaId,
-  // userId,
   seats,
   date,
   paymentDetails,
@@ -44,7 +43,7 @@ export async function createReservation({
   userId: string
   seats: Seat[]
   date: string
-  paymentDetails: any
+  paymentDetails: unknown
 }): Promise<{ id: string; qrCode: string }> {
   try {
     const headers = await getAuthHeader()
