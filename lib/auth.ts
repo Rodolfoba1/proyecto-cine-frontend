@@ -25,7 +25,7 @@ type RegisterData = {
 const JWT_SECRET = new TextEncoder().encode(process.env.JWT_SECRET)
 
 // URL base de la API
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api'
+const API_URL = process.env.API_URL || 'http://localhost:3001/api'
 
 export async function login({ email, password }: LoginData) {
   try {
