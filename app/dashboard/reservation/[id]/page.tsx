@@ -5,20 +5,14 @@ import DashboardLayout from "@/components/layouts/dashboard-layout"
 import ReservationInterface from "@/components/reservation/reservation-interface"
 import Image from "next/image"
 
-interface ReservationPageProps {
-  params: {
-    id: string
-  }
-}
-
-export default async function ReservationPage({ params }: ReservationPageProps) {
+export default async function ReservationPage({ params }: { params: { id: string } }) {
   const session = await getSession()
 
   if (!session) {
     redirect("/")
   }
 
-  const { id } = await params
+  const { id } = params // ya no lleva await
   const cinema = await getCinemaById(id)
 
   if (!cinema) {
@@ -41,8 +35,8 @@ export default async function ReservationPage({ params }: ReservationPageProps) 
               <Image
                 src={cinema.movie.posterUrl || "/placeholder.svg"}
                 alt={cinema.movie.title}
-                  width={400}
-                  height={600}
+                width={400}
+                height={600}
                 className="w-full h-full object-cover"
               />
             </div>
@@ -53,4 +47,3 @@ export default async function ReservationPage({ params }: ReservationPageProps) 
     </DashboardLayout>
   )
 }
-
