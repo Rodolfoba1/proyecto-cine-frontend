@@ -10,6 +10,7 @@ import CinemaForm from "@/components/admin/cinema-form"
 import DeleteCinemaDialog from "@/components/admin/delete-cinema-dialog"
 import { deleteCinema } from "@/lib/cinema"
 import { toast } from "sonner"
+import Image from "next/image"
 
 interface CinemaManagementProps {
   initialCinemas: Cinema[]
@@ -76,11 +77,11 @@ export default function CinemaManagement({ initialCinemas }: CinemaManagementPro
           {cinemas.map((cinema) => (
             <Card key={cinema.id} className="bg-slate-800 border-slate-700 overflow-hidden">
               <div className="aspect-video relative overflow-hidden">
-                <img
+                <Image
                   src={cinema.movie.posterUrl || "/placeholder.svg"}
                   alt={cinema.movie.title}
-                    width={400}
-                    height={600}
+                  width={400}
+                  height={600}
                   className="w-full h-full object-cover"
                 />
               </div>
