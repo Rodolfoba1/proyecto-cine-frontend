@@ -68,6 +68,7 @@ export async function register({ name, email, password }: RegisterData) {
       headers: {
         'Content-Type': 'application/json',
       },
+      credentials: 'include',
       body: JSON.stringify({ name, email, password }),
       cache: 'no-store'
     })
