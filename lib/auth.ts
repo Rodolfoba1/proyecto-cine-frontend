@@ -34,7 +34,7 @@ export async function login({ email, password }: LoginData) {
       headers: {
         'Content-Type': 'application/json',
       },
-      credentials: "include",
+      // credentials: "include",
       body: JSON.stringify({ email, password }),
       cache: 'no-store'
     })
@@ -68,7 +68,7 @@ export async function register({ name, email, password }: RegisterData) {
       headers: {
         'Content-Type': 'application/json',
       },
-      credentials: 'include',
+      // credentials: 'include',
       body: JSON.stringify({ name, email, password }),
       cache: 'no-store'
     })
