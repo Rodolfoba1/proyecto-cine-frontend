@@ -11,13 +11,14 @@ import { es } from "date-fns/locale"
 import QRCode from "@/components/reservation/qr-code"
 
 interface PageParams {
-  params: {
+  params: Promise<{
     id: string
-  }
+  }>
 }
 
-export default async function ReservationDetailsPage({ params }: PageParams) {
-  
+export default async function ReservationDetailsPage(props: PageParams) {
+  const params = await props.params;
+
   const { id } = params;
 
   try {
