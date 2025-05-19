@@ -10,8 +10,10 @@ import { format, parseISO } from "date-fns"
 import { es } from "date-fns/locale"
 import QRCode from "@/components/reservation/qr-code"
 
-export default async function Page({ params }: { params: { id: string } }) {
-  const { id } = params;
+export default async function Page({ params }: { params: Promise<{ id: string }> | { id: string } }) {
+  // Esperar a que los parámetros estén disponibles
+  const resolvedParams = params instanceof Promise ? await params : params;
+  const { id } = resolvedParams;
 
   try {
     const session = await getSession()
