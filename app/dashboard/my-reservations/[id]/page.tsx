@@ -10,10 +10,15 @@ import { format, parseISO } from "date-fns"
 import { es } from "date-fns/locale"
 import QRCode from "@/components/reservation/qr-code"
 
-type Params = { id: string };
+interface ReservationDetailsPageProps {
+  params: {
+    id: string
+  }
+}
 
-export default async function Page({ params }: { params: Promise<Params> }) {
-  const { id } = await params;
+export default async function ReservationDetailsPage({ params }: ReservationDetailsPageProps) {
+  // Await before using it
+  const { id } = await params
 
   try {
     const session = await getSession()
