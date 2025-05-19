@@ -1,17 +1,14 @@
-# Usa una imagen oficial de Node.js
+# Dockerfile
 FROM node:18
 
-# Establece el directorio de trabajo dentro del contenedor
 WORKDIR /app
 
-# Copia los archivos al contenedor
 COPY . .
 
-# Instala dependencias
 RUN npm install --legacy-peer-deps
+RUN npm run build
 
-# Expone el puerto (ajústalo si tu Next.js está en otro puerto)
-EXPOSE 3000
+EXPOSE 8080
+ENV PORT=8080
 
-# Comando para iniciar la aplicación
-CMD ["npm", "run", "dev"]
+CMD ["npm", "start"]
