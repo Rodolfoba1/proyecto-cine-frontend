@@ -25,7 +25,7 @@ type RegisterData = {
 const JWT_SECRET = new TextEncoder().encode(process.env.JWT_SECRET)
 
 // URL base de la API
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api'
 
 export async function login({ email, password }: LoginData) {
   try {
@@ -74,6 +74,7 @@ export async function register({ name, email, password }: RegisterData) {
 
     if (!response.ok) {
       const errorData = await response.json()
+      console.error("Register failed with response:", errorData);
       throw new Error(errorData.message || "Error registering user")
     }
 
