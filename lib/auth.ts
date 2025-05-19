@@ -22,7 +22,7 @@ type RegisterData = {
 }
 
 // Clave secreta para verificar tokens (debe coincidir con la del backend)
-const JWT_SECRET = new TextEncoder().encode(process.env.JWT_SECRET)
+const JWT_SECRET = new TextEncoder().encode(process.env.NEXT_PUBLIC_JWT_SECRET)
 
 // URL base de la API
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api'
