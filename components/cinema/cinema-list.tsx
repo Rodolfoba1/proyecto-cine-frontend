@@ -63,12 +63,12 @@ export default function CinemaList() {
           </div>
           <CardHeader>
             <CardTitle className="text-xl text-white">{cinema.movie.title}</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-2 text-slate-300">
-              <p>
-                <span className="font-semibold">Sala:</span> {cinema.name}
-              </p>
+          </CardHeader> 
+          <CardContent> 
+            <div className="space-y-2 text-slate-300"> 
+              <p> 
+                <span className="font-semibold">Sala:</span> {cinema.name} 
+              </p> 
               <p>
                 <span className="font-semibold">Asientos disponibles:</span> {cinema.availableSeats} de{" "}
                 {cinema.totalSeats}
