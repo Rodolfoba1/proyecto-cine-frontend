@@ -34,6 +34,7 @@ export async function login({ email, password }: LoginData) {
       headers: {
         'Content-Type': 'application/json',
       },
+      credentials: "include",
       body: JSON.stringify({ email, password }),
       cache: 'no-store'
     })
